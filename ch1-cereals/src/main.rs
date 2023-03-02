@@ -13,6 +13,14 @@ fn main() {
     };
     println!("{} is {}", n, description);
 
+    let j = 78676;
+    let description2 = match is_even(j) {
+        true => "even",
+        false => "odd",
+    };
+    println!("{} is {}", j, description2);
+
+
     let mut count = 0;
     let time_limit = Duration::new(1, 0);
     let start = Instant::now();

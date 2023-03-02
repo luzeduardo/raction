@@ -8,7 +8,7 @@ fn main() {
     let d = 1_i32;
 
     println!("{:?}", add(add(a,b), add(c,d)));
-
+    println!("{:?}", 32.5_f32.round());
     let penguin_data = "
         common name, length (cm)
         Little penguin,33

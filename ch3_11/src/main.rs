@@ -20,12 +20,23 @@ pub struct File {
 }
 
 impl File {
+    /// New files are assumed to be empty, but a name is required
     pub fn new(name: &str) -> File {
         File {
             name: String::from(name),
             data: Vec::new(),
             state: FileState::Closed,
         }
+    }
+
+    /// Returns the file's length in bytes
+    pub fn len(&self) -> usize {
+        self.data.len()
+    }
+
+    /// Return the file's name
+    pub fn name(&self) -> String {
+        self.name.clone()
     }
 
     fn read(self: &File, save_to: &mut Vec<u8>) -> Result<usize, String> {
@@ -82,6 +93,6 @@ fn main() {
     println!("{:?}", f5);
     println!("{}", f5); //uses own Display impl
 
-    println!("{} is {} bytes long", &f5.name, f5_length);
+    println!("{} is {} bytes long", &f5.name(), f5.len());
     println!("{}", text);
 }

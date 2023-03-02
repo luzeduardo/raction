@@ -15,12 +15,20 @@ impl GroundStation {
     fn send(&self, to: &mut CubeSat, msg: Message,) {
         to.mailbox.messages.push(msg);
     }
+
+    fn connect(&self, sat_id: u64) -> CubeSat {
+        CubeSat { id: sat_id, mailbox: MailBox { messages: vec![] } }
+    }
 }
 
 impl CubeSat {
     fn recv(&mut self) -> Option<Message> {
         self.mailbox.messages.pop()
     }
+}
+
+fn fetch_sat_ids() -> Vec<u64> {
+    vec![1, 2, 3]
 }
 
 // ownership of the to variable moves into send and to is deleted.

@@ -42,5 +42,9 @@ fn main() {
     cpu.current_operation = 0x8014;
     // registers can only hold u8 values
     cpu.registers[0] = 5;
-    cpu.registers[1] = 10
+    cpu.registers[1] = 10;
+    cpu.run();
+
+    assert_eq!(cpu.registers[0], 15);
+    println!("5 + 10 = {}", cpu.registers[0]);
 }

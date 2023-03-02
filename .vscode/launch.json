@@ -5,7 +5,7 @@
       "name": "RAction",
       "type": "lldb",
       "request": "launch",
-      "program": "${workspaceRoot}/ch1-penguins/target/debug/ch1-penguins/",
+      "program": "${workspaceRoot}/${relativeFileDirname}/../target/debug/${relativeFileDirname}/../",
       "args": [],
       "cwd": "${workspaceRoot}",
     }

@@ -4,20 +4,20 @@ use std::fmt;
 use std::fmt::{Display};
 
 #[derive(Debug,PartialEq)]
-enum FileState {
+pub enum FileState {
     Open,
     Closed,
 }
 
 #[derive(Debug)]
-struct File {
+pub struct File {
     name: String,
     data: Vec<u8>,
     state: FileState,
 }
 
 impl File {
-    fn new(name: &str) -> File {
+    pub fn new(name: &str) -> File {
         File {
             name: String::from(name),
             data: Vec::new(),

@@ -10,6 +10,8 @@ pub enum FileState {
     Closed,
 }
 
+/// Represents a "file",
+/// which probably lives in a file system
 #[derive(Debug)]
 pub struct File {
     name: String,

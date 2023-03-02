@@ -1,5 +1,7 @@
+#![allow(dead_code)]
+
 use std::fmt;
-use std::fmt::Display;
+use std::fmt::{Display};
 
 #[derive(Debug,PartialEq)]
 enum FileState {
@@ -61,6 +63,7 @@ fn close(mut f: File) -> Result<File, String> {
 }
 fn main() {
     let mut f5 = File::new("5.txt");
+
     let mut buffer: Vec<u8> = vec![];
 
     if f5.read(&mut buffer).is_err() {
@@ -74,6 +77,8 @@ fn main() {
     let text = String::from_utf8_lossy(&buffer);
 
     println!("{:?}", f5);
+    println!("{}", f5); //uses own Display impl
+
     println!("{} is {} bytes long", &f5.name, f5_length);
     println!("{}", text);
 }

@@ -1,3 +1,4 @@
+//! Simulating files one step at a time.
 #![allow(dead_code)]
 
 use std::fmt;

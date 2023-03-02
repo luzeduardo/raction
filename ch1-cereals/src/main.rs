@@ -3,6 +3,13 @@ use std::time::{Duration, Instant};
 fn is_even(n: i32) -> bool {
     n % 2 == 0
 }
+
+fn break_value_assign() {
+    let n = loop {
+        break 123;
+    };
+    println!("{}", n);
+}
 fn main() {
     let n = 123456;
 
@@ -20,6 +27,7 @@ fn main() {
     };
     println!("{} is {}", j, description2);
 
+    break_value_assign();
 
     let mut count = 0;
     let time_limit = Duration::new(1, 0);

@@ -27,9 +27,27 @@ impl Mailbox {
     }
     
 }
+// #[derive(Copy, Clone, Debug)] tells the compiler to add an implementation of each trait to the enum
 #[derive(Debug)]
 struct CubeSat {
     id: u64,
+}
+impl Copy for CubeSat {}
+impl Clone for CubeSat {
+    fn clone(&self) -> Self {
+        CubeSat { id: self.id }
+    }
+}
+#[derive(Debug)]
+enum StatusMessage {
+    Ok,
+}
+//implements those traits manually
+impl Copy for StatusMessage {}
+impl Clone for StatusMessage {
+    fn clone(&self) -> Self {
+        *self
+    }
 }
 
 struct GroundStation;

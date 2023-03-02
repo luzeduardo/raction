@@ -1,4 +1,14 @@
+fn add(i: i32, j:i32) -> i32 {
+    i + j
+}
 fn main() {
+    let a = 10;
+    let b: i32 = 2;
+    let c = 1i32;
+    let d = 1_i32;
+
+    println!("{:?}", add(add(a,b), add(c,d)));
+
     let penguin_data = "
         common name, length (cm)
         Little penguin,33

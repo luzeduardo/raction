@@ -8,6 +8,16 @@
       "program": "${workspaceRoot}/${relativeFileDirname}/../target/debug/${relativeFileDirname}/../",
       "args": [],
       "cwd": "${workspaceRoot}",
+    },
+    {
+      "name": "grep-lite",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceRoot}/ch2_30/target/debug/ch2_30/",
+      "args": [
+        "o"
+      ],
+      "cwd": "${workspaceRoot}",
     }
   ]
 }

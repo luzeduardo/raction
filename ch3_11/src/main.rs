@@ -1,3 +1,6 @@
+use std::fmt;
+use std::fmt::Display;
+
 #[derive(Debug,PartialEq)]
 enum FileState {
     Open,
@@ -29,6 +32,21 @@ impl File {
         save_to.reserve(read_length);
         save_to.append(&mut tmp);
         Ok(read_length)
+    }
+}
+
+impl Display for FileState {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match *self {
+           FileState::Open => write!(f, "OPEN"),
+           FileState::Closed => write!(f, "CLOSED"), 
+        }
+    }
+}
+
+impl Display for File {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "<{} ({})>", self.name, self.state)
     }
 }
 

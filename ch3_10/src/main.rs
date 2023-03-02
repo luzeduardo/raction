@@ -9,7 +9,7 @@ type Message = String;
 
 fn parse_log(line: &str) -> (Event, Message) {
     //splits the string with a max of N parts defined in splitn
-    let parts: Vec<_> = line.splitn(2, ' ').collect();
+    let parts: Vec<_> = line.splitn(3, ' ').collect();
 
     if parts.len() == 1 {
         return (Event::Unknown, String::from(line))

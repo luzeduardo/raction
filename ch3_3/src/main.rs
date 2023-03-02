@@ -7,6 +7,11 @@ struct File {
     data: Vec<u8>,
 }
 
+impl File {
+    fn new(name: &str, data: Vec<u8>) -> File {
+        File { name: String::from(name), data: data }
+    }
+}
 fn open(f: &mut File) -> bool {
     true
 }
@@ -28,10 +33,7 @@ fn read(f:  &File, save_to: &mut Vec<u8>) -> usize {
     read_length
 }
 fn main() {
-    let mut f2 = File {
-        name: String::from("2.txt"),
-        data: vec![114, 117, 115, 116, 33],
-    };
+    let mut f2 = File::new("3.txt", [114, 117, 115, 116, 33].to_vec());
 
     let mut buffer: Vec<u8> = vec![];
 

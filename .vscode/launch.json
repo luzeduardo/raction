@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "RAction",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceRoot}/ch1-penguins/target/debug/ch1-penguins/",
+      "args": [],
+      "cwd": "${workspaceRoot}",
+    }
+  ]
+}

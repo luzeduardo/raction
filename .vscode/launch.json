@@ -18,6 +18,16 @@
         "o"
       ],
       "cwd": "${workspaceRoot}",
+    },
+    {
+      "name": "ch7_4_print_hex_of_file",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceRoot}/ch7_4/target/debug/ch7_4/",
+      "args": [
+        "Cargo.toml"
+      ],
+      "cwd": "${workspaceRoot}",
     }
   ]
 }

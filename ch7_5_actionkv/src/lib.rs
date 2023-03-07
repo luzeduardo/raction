@@ -1,49 +1,58 @@
-use libactionkv::ActionKV;
+use std::collections::HashMap;
+use std::fs::{OpenOptions, File};
+use std::path::Path;
+use std::io::{self};
+#[derive(Debug)]
+pub struct ActionKV {
+    f: File,
+    pub index: HashMap<ByteString, u64>,
+}
 
-#[cfg(target_os = "windows")]
-const USAGE: &str = "
-Usage:
-    akv_mem.exe FILE get KEY
-    akv_mem.exe FILE delete KEY
-    akv_mem.exe FILE insert KEY VALUE
-    akv_mem.exe FILE update KEY VALUE
-";
+type ByteString = Vec<u8>;
+// type ByteStr = [u8];
 
-#[cfg(not(target_os = "windows"))]
-const USAGE: &str = "
-Usage:
-    akv_mem FILE get KEY
-    akv_mem FILE delete KEY
-    akv_mem FILE insert KEY VALUE
-    akv_mem FILE update KEY VALUE
-";
+#[derive(Debug)]
+pub struct KeyvaluePair {
+    pub key: ByteString,
+    pub valur: ByteString,
+}
 
-fn main() {
-    let args: Vec<String> = std::env::args().collect();
-    let fname = args.get(1).expect(&USAGE);
-    let action = args(2).expect(&USAGE).as_ref();
-    let key = args.get(3).expect(&USAGE).as_ref();
-    let maybe_value = args.get(4);
-
-    let path = std::path::Path::new(&fname);
-    let mut store = ActionKV::open(path).expect("unable to open file");
-    store.load().expect("unable to load data");
-
-
-    match action {
-        "get" => match store.get(key).unwrap() {
-            None => eprintln!("{:?} not found", key),
-            Some(value) => println!("{:?}", value),
-        },
-        "delete" => store.delete(key).unwrap(),
-        "insert" => {
-            let value = maybe_value.expect(&USAGE).as_ref();
-            store.insert(key, value).unwrap()
-        }
-        "update" => {
-            let value = maybe_value.expect(&USAGE).as_ref();
-            store.update(key, value).unwrap()
-        }
-        _ => eprintln!("{}", &USAGE),
+impl ActionKV {
+    pub fn open(path: &Path) -> io::Result<Self> {
+        let f = OpenOptions::new()
+        .read(true)
+        .write(true)
+        .create(true)
+        .append(true)
+        .open(path)?;
+        Ok(ActionKV {
+            f: f,
+            index: HashMap::new(),
+        })
     }
+
+    pub fn get() {}
+    pub fn load(&mut self) -> io::Result<()> {
+        // let mut f = BufReader::new(&mut self.f);
+        // loop {
+        //     let position = f.seek(SeekFrom::Current(0))?;
+        //     let maybe_kv = ActionKV::process_record(&mut f);
+        //     let kv = match maybe_kv {
+        //         Ok(kv) => kv,
+        //         Err(err) => {
+        //             match err.kind() {
+        //                 io::ErrorKind::UnexpectedEof => {
+        //                     break;
+        //                 }
+        //                 _ => return Err(err),
+        //             }
+        //         }
+        //     };
+        //     self.index.insert(kv.key, position);
+        // }
+        Ok(())
+    }
+    pub fn delete() {}
+    pub fn update() {}
+    pub fn insert() {}
 }
